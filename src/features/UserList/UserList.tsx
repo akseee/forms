@@ -1,23 +1,17 @@
+import { getAllCharacters } from '../../app/store/characterSlice';
+import { useSelector } from '../../app/store/store';
 import { UserCard } from '../../components/UserCard/UserCard';
-
-const user = {
-  id: 'id',
-  name: 'name',
-  age: 42,
-  email: 'email',
-  gender: 'man',
-  country: 'RU',
-  avatar: 'htttps://avatar',
-  terms: true,
-  isNew: true,
-};
+import styles from './UserList.module.css';
 
 export const UserList = () => {
+  const data = useSelector(getAllCharacters);
+
   return (
     <div>
-      <h2>Created characters</h2>
-      <ul>
-        <UserCard user={user} />
+      <ul className={styles.list}>
+        {data.map((user) => (
+          <UserCard key={user.id} {...user} />
+        ))}
       </ul>
     </div>
   );

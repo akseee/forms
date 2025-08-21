@@ -10,7 +10,8 @@
   --background-color: #f1f8f1;
   --modal-background: var(--color-green);
 
-  --success: ;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --success: rgb(149, 229, 162);
   --error: rgb(229, 149, 149);
-  --warn: ;
+  --warn: rgb(229, 204, 149);
 }

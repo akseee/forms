@@ -1,0 +1,54 @@
+.card {
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--box-shadow);
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ame {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.country {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  color: #333;
+  font-weight: 500;
+}
+
+.value {
+  color: #555;
+}

@@ -1,6 +1,3 @@
-// user
-//forms
-
 export interface TUserFormInputs {
   name: string;
   age: number;
@@ -9,7 +6,17 @@ export interface TUserFormInputs {
   confirmPassword: string;
   gender: string;
   terms: boolean;
-  // avatar: FileList | null;
+  country: string;
+}
+
+export interface TUserData {
+  id: string;
+  name: string;
+  age: number;
+  email: string;
+  password: string;
+  gender: string;
+  terms: boolean;
   country: string;
 }
 
@@ -24,26 +31,3 @@ export interface TFormErrors {
   avatar?: string;
   country?: string;
 }
-
-export interface TUserData {
-  name: string;
-  age: number;
-  email: string;
-  password: string;
-  gender: string;
-  terms: boolean;
-  // avatar: string | null;
-  country: string;
-}
-
-export type TUserCard = {
-  id: string;
-  name: string;
-  age: number;
-  email: string;
-  gender: 'man' | 'woman' | string;
-  country: string;
-  avatarBase64: string;
-  tags?: string[];
-  isNew?: boolean;
-};

@@ -3,15 +3,21 @@ import { Modal } from '../../components/Modal/Modal';
 import type { TUserData } from '../../utils/types';
 import { ClassicForm } from '../Forms/ClassicForm';
 import { QuickForm } from '../Forms/QuickForm';
+import { useDispatch } from '../../app/store/store';
+import { characterActions } from '../../app/store/characterSlice';
 
 export const ControlsList = () => {
   const [isClassicOpen, setIsClassicOpen] = useState(false);
   const [isQuickOpen, setIsQuickOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleData = (data: TUserData) => {
     console.log(data);
     setIsClassicOpen(false);
     setIsQuickOpen(false);
+
+    dispatch(characterActions.addCharacter(data));
   };
 
   return (

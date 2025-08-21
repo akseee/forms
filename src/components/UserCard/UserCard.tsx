@@ -1,52 +1,33 @@
-export const UserCard = (user) => {
-  return (
-    <article
-      className={`card ${user.isNew ? 'is-new' : ''}`}
-      aria-labelledby={`${user.id}-title`}
-      aria-describedby={`${user.id}-desc`}
-    >
-      <header>
-        <figure className="avatar" aria-hidden="true">
-          <img
-            src={user.avatar}
-            alt={`Profile picture of ${user.name}`}
-            width={64}
-            height={64}
-          />
-          <figcaption className="sr-only">Profile picture</figcaption>
-        </figure>
+import type { TUserData } from '../../utils/types';
+import styles from './UserCard.module.css';
 
-        <div className="headings">
-          <h2 id={`${user.id}-title`} className="name">
-            {user.name}
+export const UserCard = (data: TUserData) => {
+  return (
+    <article aria-labelledby={`${data.id}-title`} className={styles.card}>
+      <header className={styles.header}>
+        <div className={styles.info}>
+          <h2 id={`${data.id}-title`} className={styles.name}>
+            {data.name}
           </h2>
-          <p id={`${user.id}-desc`} className="meta">
-            {user.isNew && (
-              <span className="badge" aria-label="Новая запись">
-                New
-              </span>
-            )}
-            {user.country}
-          </p>
+          <p className={styles.country}>{data.country}</p>
         </div>
       </header>
 
-      <section className="content" aria-label="Основная информация">
-        <dl className="dl">
-          <dt className="dt">Age</dt>
-          <dd className="dd">{user.age}</dd>
-
-          <dt className="dt">Email</dt>
-          <dd className="dd">
-            <a href={`mailto:${user.email}`}>{user.email}</a>
-          </dd>
-
-          <dt className="dt">Gender</dt>
-          <dd className="dd">{user.gender}</dd>
-
-          <dt className="dt">Country</dt>
-          <dd className="dd">{user.country}</dd>
-        </dl>
+      <section className={styles.details}>
+        <div className={styles.item}>
+          <span className={styles.label}>Age:</span>
+          <span className={styles.value}>{data.age}</span>
+        </div>
+        <div className={styles.item}>
+          <span className={styles.label}>Email:</span>
+          <a href={`mailto:${data.email}`} className={styles.value}>
+            {data.email}
+          </a>
+        </div>
+        <div className={styles.item}>
+          <span className={styles.label}>Gender:</span>
+          <span className={styles.value}>{data.gender}</span>
+        </div>
       </section>
     </article>
   );

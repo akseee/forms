@@ -1,6 +1,6 @@
 .form {
   padding: 1em;
-  color: var(--main-color);
+  color: var(--secondary-color);
   background-color: var(--modal-background);
 }
 
@@ -16,5 +16,9 @@
 }
 
 .title {
-  color: var(--secondary-color);
+  color: var(--main-color);
+}
+
+input {
+  font-weight: bold;
 }

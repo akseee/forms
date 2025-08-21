@@ -5,6 +5,7 @@ import { ClassicForm } from '../Forms/ClassicForm';
 import { QuickForm } from '../Forms/QuickForm';
 import { useDispatch } from '../../app/store/store';
 import { characterActions } from '../../app/store/characterSlice';
+import styles from './ControlList.module.css';
 
 export const ControlsList = () => {
   const [isClassicOpen, setIsClassicOpen] = useState(false);
@@ -21,23 +22,15 @@ export const ControlsList = () => {
   };
 
   return (
-    <div>
-      <h2>Controls List</h2>
-      <div>
-        <button onClick={() => setIsClassicOpen(true)}>
-          Classic Form: pen
-        </button>
-        <Modal
-          isOpen={isClassicOpen}
-          handleClose={() => setIsClassicOpen(false)}
-        >
-          <ClassicForm handleSubmitData={handleData} />
-        </Modal>
-        <button onClick={() => setIsQuickOpen(true)}>Quick Form: light</button>
-        <Modal isOpen={isQuickOpen} handleClose={() => setIsQuickOpen(false)}>
-          <QuickForm handleSubmitData={handleData} />
-        </Modal>
-      </div>
+    <div className={styles.content}>
+      <button onClick={() => setIsClassicOpen(true)}>Classic way</button>
+      <Modal isOpen={isClassicOpen} handleClose={() => setIsClassicOpen(false)}>
+        <ClassicForm handleSubmitData={handleData} />
+      </Modal>
+      <button onClick={() => setIsQuickOpen(true)}>Quick way</button>
+      <Modal isOpen={isQuickOpen} handleClose={() => setIsQuickOpen(false)}>
+        <QuickForm handleSubmitData={handleData} />
+      </Modal>
     </div>
   );
 };

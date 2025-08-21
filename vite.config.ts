@@ -1,23 +1,24 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/forms/',
   test: {
     globals: true,
-    environment: "jsdom",
-    setupFiles: "./src/setupTests.ts",
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
     css: true,
-    include: ["**/*.test.{ts,tsx}"],
+    include: ['**/*.test.{ts,tsx}'],
     coverage: {
-      provider: "v8",
-      reporter: ["text", "html"],
+      provider: 'v8',
+      reporter: ['text', 'html'],
       all: true,
-      exclude: ["public", "node_modules/", "dist/"],
+      exclude: ['public', 'node_modules/', 'dist/'],
       thresholds: {
         global: {
           statements: 80,

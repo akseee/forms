@@ -1,17 +1,22 @@
 :root {
-  --color-green-light: #a8dcab;
-  --color-green: #519755;
-  --color-pink: #dbaaa7;
-  --color-lavender: #be91be;
+  --color-green: #43bd49;
 
-  --main-color: rgb(22, 0, 0);
-  --secondary-color: #fff2f2;
+  --main-ff: 'Fira Sans Condensed', sans-serif;
+  --secondary-ff: Orbitron, monospace;
+
+  --main-color: #fff;
+  --secondary-color: #000;
   --accent-color: var(--color-green);
-  --background-color: #f1f8f1;
-  --modal-background: var(--color-green);
+  --color: #312f2f;
 
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --success: rgb(149, 229, 162);
-  --error: rgb(229, 149, 149);
-  --warn: rgb(229, 204, 149);
+  --background-color: #1d1d1d;
+  --modal-background: var(--color-green);
+  --card-background: #5e5e5e;
+
+  --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  --border-radius: 12px;
+
+  --success: rgb(72, 241, 72);
+  --error: rgb(241, 72, 72);
+  --warn: rgb(241, 148, 72);
 }

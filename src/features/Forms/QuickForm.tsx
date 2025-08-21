@@ -4,23 +4,26 @@ import type { TUserData, TUserFormInputs } from '../../utils/types';
 import styles from './Form.module.css';
 import { useForm } from 'react-hook-form';
 import { schema } from '../../utils/schema';
-import { useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
 
 interface IQuickFormProps {
   handleSubmitData: (data: TUserData) => void;
 }
 
 export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
-  const firstInputRef = useRef<HTMLInputElement>(null);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setFocus,
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    setFocus('name');
+  }, [setFocus]);
 
   const onSubmit = (formData: TUserFormInputs) => {
     const data: TUserData = {
@@ -36,22 +39,13 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
     handleSubmitData(data);
   };
 
-  useEffect(() => {
-    firstInputRef.current?.focus();
-  }, []);
-
   return (
     <>
-      <h2 className={styles.title}>Quick form</h2>
+      <h2 className={styles.title}>Quick</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div>
           <label htmlFor="name">Name:</label>
-          <input
-            {...register('name')}
-            type="text"
-            id="name"
-            ref={firstInputRef}
-          />
+          <input {...register('name')} type="text" id="name" />
           <p className={styles.error}>{errors.name?.message}</p>
         </div>
 

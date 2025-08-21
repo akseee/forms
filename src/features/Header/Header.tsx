@@ -1,8 +1,10 @@
+import styles from './Header.module.css';
+
 export const Header = () => {
   return (
-    <header>
-      <h1>profile creator studio!</h1>
-      <p>
+    <header className={styles.header}>
+      <h1 className={styles.title}>profile creator studio!</h1>
+      <p className={styles.text}>
         Create your character in two ways: with a regular form or with the
         super-convenient React Hook Form
       </p>

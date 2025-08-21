@@ -9,7 +9,8 @@ export const schema = yup.object({
     .number()
     .required('Age is required')
     .typeError('Age must be a number')
-    .min(0, 'Age must be a non-negative number'),
+    .min(0, 'Age must be a non-negative number')
+    .max(120, 'Age must be real'),
   email: yup
     .string()
     .email('Invalid email address')

@@ -10,12 +10,10 @@ body {
   margin: 0 auto;
   overflow-y: scroll;
   color: var(--main-color);
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: var(--main-ff);
   font-weight: 400;
   line-height: 1.5;
   background-color: var(--background-color);
-  inline-size: 1200px;
-  block-size: 100%;
 }
 
 #modal-root {
@@ -24,6 +22,11 @@ body {
 }
 
 button {
+  border: none;
+  padding: 1em 2em;
+  outline: none;
+  font-family: var(--secondary-ff);
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -34,6 +37,7 @@ h4,
 h5,
 h6 {
   color: var(--accent-color);
+  font-family: var(--secondary-ff);
   font-weight: 700;
 }
 

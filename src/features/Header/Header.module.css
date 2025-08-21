@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.title {
+  font-size: 2em;
+}

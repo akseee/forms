@@ -1,7 +1,16 @@
 :root {
-  --color-white: #fff;
+  --color-green-light: #a8dcab;
+  --color-green: #519755;
+  --color-pink: #dbaaa7;
+  --color-lavender: #be91be;
 
-  --main-color: var(--color-white);
-  --background-color: #1b1919;
-  --modal-background: rgba(255, 255, 255, 0.5);
+  --main-color: rgb(22, 0, 0);
+  --secondary-color: #fff2f2;
+  --accent-color: var(--color-green);
+  --background-color: #f1f8f1;
+  --modal-background: var(--color-green);
+
+  --success: ;
+  --error: rgb(229, 149, 149);
+  --warn: ;
 }

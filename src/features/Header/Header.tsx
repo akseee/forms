@@ -6,7 +6,6 @@ export const Header = () => {
         Create your character in two ways: with a regular form or with the
         super-convenient React Hook Form
       </p>
-      <button>about</button>
     </header>
   );
 };

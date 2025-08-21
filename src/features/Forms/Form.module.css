@@ -1,0 +1,16 @@
+.form {
+  padding: 1em;
+  color: var(--main-color);
+  background-color: var(--modal-background);
+}
+
+.error {
+  display: block;
+  width: 100%;
+  min-height: 1em;
+  color: var(--error);
+  font-weight: bold;
+  font-size: 0.7em;
+  line-height: 100%;
+  text-align: center;
+}

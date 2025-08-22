@@ -16,10 +16,11 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid, isSubmitting },
     setFocus,
   } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onChange',
   });
 
   useEffect(() => {
@@ -123,7 +124,13 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
           </label>
           <p className={styles.error}>{errors.terms?.message}</p>
         </div>
-        <button type="submit">Send</button>
+        <button
+          type="submit"
+          disabled={!isValid || isSubmitting}
+          className={styles.button}
+        >
+          {isSubmitting ? 'Sending...' : 'Send'}
+        </button>
       </form>
     </>
   );

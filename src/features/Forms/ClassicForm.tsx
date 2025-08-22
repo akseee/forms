@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import styles from './Form.module.css';
-import type { TFormErrors, TUserData } from '../../utils/types';
+import type {
+  TFormErrors,
+  TUserData,
+  TUserFormInputs,
+} from '../../utils/types';
 import { countries } from '../../utils/constants';
 import { validateForm } from '../../utils/validateForm';
 import { v4 as uuidv4 } from 'uuid';
@@ -26,22 +30,29 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
     if (!form) return;
 
     const formData = new FormData(form);
-    const validationErrors = validateForm(formData);
+
+    const values: TUserFormInputs = {
+      name: String(formData.get('name') ?? ''),
+      age: Number(formData.get('age') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      password: String(formData.get('password') ?? ''),
+      confirmPassword: String(formData.get('confirmPassword') ?? ''),
+      gender: String(formData.get('gender') ?? ''),
+      terms: formData.get('terms') === 'on',
+      country: String(formData.get('country') ?? ''),
+    };
+
+    const validationErrors = validateForm(values);
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
       const payload: TUserData = {
-        name: String(formData.get('name') ?? ''),
-        age: Number(formData.get('age') ?? ''),
-        email: String(formData.get('email') ?? ''),
-        password: String(formData.get('password') ?? ''),
-        gender: String(formData.get('gender') ?? ''),
-        terms: formData.get('terms') === 'on',
-        country: String(formData.get('country') ?? ''),
+        ...values,
         id: uuidv4(),
       };
 
       handleSubmitData(payload);
+      form.reset();
     }
   };
 

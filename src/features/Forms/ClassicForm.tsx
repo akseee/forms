@@ -4,6 +4,7 @@ import type { TFormErrors, TUserData } from '../../utils/types';
 import { countries } from '../../utils/constants';
 import { validateForm } from '../../utils/validateForm';
 import { v4 as uuidv4 } from 'uuid';
+import clsx from 'clsx';
 
 interface IClassicFormProps {
   handleSubmitData: (data: TUserData) => void;
@@ -48,56 +49,50 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
     <>
       <h2 className={styles.title}>Classic</h2>
       <form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
-        <div>
+        <div className={styles.field}>
           <label htmlFor="name">Name:</label>
           <input ref={firstInputRef} type="text" id="name" name="name" />
           <p className={styles.error}>{errors.name}</p>
         </div>
 
-        <div>
+        <div className={styles.field}>
           <label htmlFor="age">Age:</label>
           <input type="number" id="age" name="age" />
           <p className={styles.error}>{errors.age}</p>
         </div>
 
-        <div>
+        <div className={clsx(styles.field, styles.gender)}>
+          <div className={styles.options}>
+            <label className={styles.option}>
+              <input type="radio" name="gender" value="male" /> Male
+            </label>
+            <label className={styles.option}>
+              <input type="radio" name="gender" value="female" /> Female
+            </label>
+          </div>
+          <p className={styles.error}>{errors.gender}</p>
+        </div>
+
+        <div className={styles.field}>
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" />
           <p className={styles.error}>{errors.email}</p>
         </div>
 
-        <div>
+        <div className={styles.field}>
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" />
           <p className={styles.error}>{errors.password}</p>
         </div>
 
-        <div>
+        <div className={styles.field}>
           <label htmlFor="confirmPassword">Confirm password:</label>
           <input type="password" id="confirmPassword" name="confirmPassword" />
 
           <p className={styles.error}>{errors.confirmPassword}</p>
         </div>
 
-        <div>
-          <label>Gender:</label>
-          <label>
-            <input type="radio" name="gender" value="male" /> Male
-          </label>
-          <label>
-            <input type="radio" name="gender" value="female" /> Female
-          </label>
-          <p className={styles.error}>{errors.gender}</p>
-        </div>
-
-        <div>
-          <label htmlFor="terms">
-            <input type="checkbox" id="terms" name="terms" />I accept the terms
-          </label>
-          <p className={styles.error}>{errors.terms}</p>
-        </div>
-
-        <div>
+        <div className={styles.field}>
           <label htmlFor="country">Country:</label>
           <input type="text" id="country" name="country" list="countries" />
           <datalist id="countries">
@@ -108,7 +103,19 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
           <p className={styles.error}>{errors.country}</p>
         </div>
 
-        <button type="submit">Send</button>
+        <div className={clsx(styles.field, styles.terms)}>
+          <label htmlFor="terms">
+            <input type="checkbox" id="terms" name="terms" />I accept
+            <a href="https://www.google.com/" target="_blank" rel="noreferrer">
+              the Terms & Conditions
+            </a>
+          </label>
+          <p className={styles.error}>{errors.terms}</p>
+        </div>
+
+        <button type="submit" className={styles.button}>
+          Send
+        </button>
       </form>
     </>
   );

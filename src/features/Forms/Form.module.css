@@ -1,5 +1,8 @@
 .form {
-  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  padding: 0.5em;
   color: var(--secondary-color);
   background-color: var(--modal-background);
 }
@@ -9,7 +12,6 @@
   width: 100%;
   min-height: 1em;
   color: var(--error);
-  font-weight: bold;
   font-size: 0.7em;
   line-height: 100%;
   text-align: center;
@@ -21,4 +23,57 @@
 
 input {
   font-weight: bold;
+}
+
+.field label {
+  font-weight: bold;
+}
+
+.gender {
+  gap: 0.5rem;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.option input[type='radio'] {
+  margin: 0;
+  transform: scale(1.1);
+  cursor: pointer;
+  accent-color: black;
+}
+
+.terms label {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  color: #444;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.terms label input[type='checkbox'] {
+  max-width: fit-content;
+  margin: 0;
+  margin-left: 1em;
+  padding: 0;
+  transform: scale(1.2);
+  cursor: pointer;
+  accent-color: black;
+}
+
+.button {
+  margin-top: 1em;
 }

@@ -23,9 +23,10 @@ export function validateForm(formData: FormData): TFormErrors {
   const email = formData.get('email') as string;
   if (!email) {
     errors.email = 'Email is required';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errors.email = 'Invalid email address';
   }
+  // } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  //   errors.email = 'Invalid email address';
+  // }
 
   const password = formData.get('password') as string;
   const confirmPassword = formData.get('confirmPassword') as string;
@@ -44,10 +45,10 @@ export function validateForm(formData: FormData): TFormErrors {
   if (!gender) errors.gender = 'Gender is required';
 
   const terms = formData.get('terms') === 'on';
-  if (!terms) errors.terms = 'You must accept T&C';
+  if (!terms) errors.terms = 'You must accept Terms & Conditions';
 
   const country = formData.get('country') as string;
-  if (!country) errors.country = 'You must accept Terms & Conditions';
+  if (!country) errors.country = 'You must select your country';
 
   return errors;
 }

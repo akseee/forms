@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 1em;
-  border-radius: var(--border-radius);
   padding: 1em;
   box-shadow: var(--box-shadow);
   background-color: var(--card-background);
@@ -50,10 +49,6 @@
 .item {
   display: flex;
   justify-content: space-between;
-}
-
-.label {
-  color: var(--color);
 }
 
 .value {

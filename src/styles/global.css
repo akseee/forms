@@ -18,7 +18,7 @@ body {
 
 #modal-root {
   position: absolute;
-  width: 40%;
+  width: 60%;
 }
 
 button {
@@ -27,7 +27,13 @@ button {
   outline: none;
   font-family: var(--secondary-ff);
   font-weight: bold;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(177, 177, 177);
 }
 
 h1,
@@ -58,4 +64,26 @@ ul,
 ol {
   margin: 0;
   padding: 0;
+}
+
+input {
+  border: none;
+  padding: 0.2em 1em;
+  outline: none;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+a {
+  opacity: 0.7;
+  color: var(--accent-color-secondary);
+  font-style: italic;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+a:hover {
+  opacity: 1;
 }

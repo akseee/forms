@@ -1,7 +1,8 @@
 .list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1em;
+  margin: 1em 0 2em;
   border: 4px solid rgba(255, 255, 255, 0.5);
   padding: 2em 1em;
 }

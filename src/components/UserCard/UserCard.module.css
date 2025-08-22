@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 1em;
+  border: 3px solid transparent;
   padding: 1em;
   box-shadow: var(--box-shadow);
   background-color: var(--card-background);
@@ -54,4 +55,10 @@
 .value {
   color: var(--accent-color);
   font-weight: bold;
+}
+
+.highlight {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px var(--accent-color);
+  background-color: #838383;
 }

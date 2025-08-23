@@ -7,6 +7,7 @@ import { schema } from '../../utils/schema';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
 import clsx from 'clsx';
+import { fileToBase64 } from '../../utils/fileToBase64';
 
 interface IQuickFormProps {
   handleSubmitData: (data: TUserData) => void;
@@ -27,7 +28,13 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
     setFocus('name');
   }, [setFocus]);
 
-  const onSubmit = (formData: TUserFormInputs) => {
+  const onSubmit = async (formData: TUserFormInputs) => {
+    let pictureBase64 = '';
+
+    if (formData.picture instanceof FileList) {
+      pictureBase64 = await fileToBase64(formData.picture[0]);
+    }
+
     const data: TUserData = {
       name: formData.name,
       age: formData.age,
@@ -36,6 +43,7 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
       gender: formData.gender,
       terms: formData.terms,
       country: formData.country,
+      picture: pictureBase64,
       id: uuidv4(),
     };
     handleSubmitData(data);
@@ -59,7 +67,13 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
 
         <div className={styles.field}>
           <label htmlFor="picture">Profile picture:</label>
-          <input type="file" id="picture" name="picture" />
+          <input
+            {...register('picture')}
+            type="file"
+            id="picture"
+            name="picture"
+          />
+          <p className={styles.error}>{errors.picture?.message}</p>
         </div>
 
         <div className={clsx(styles.field, styles.gender)}>

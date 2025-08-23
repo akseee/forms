@@ -14,6 +14,7 @@ export const ControlsList = () => {
   const dispatch = useDispatch();
 
   const handleData = (data: TUserData) => {
+    console.log(data);
     setIsClassicOpen(false);
     setIsQuickOpen(false);
     dispatch(characterActions.addCharacter(data));

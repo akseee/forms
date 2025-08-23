@@ -7,7 +7,7 @@ export interface TUserFormInputs {
   gender: string;
   terms: boolean;
   country: string;
-  picture?: string;
+  picture?: File | FileList;
 }
 
 export interface TUserData {
@@ -19,18 +19,19 @@ export interface TUserData {
   gender: string;
   terms: boolean;
   country: string;
-  picture?: string;
+  picture: string;
 }
 
 export interface TFormErrors {
   name?: string;
   age?: string;
-  email?: string;
+  emil?: string;
   password?: string;
   confirmPassword?: string;
   gender?: string;
   terms?: string;
   avatar?: string;
   country?: string;
+  picture?: string;
   [key: string]: string | undefined;
 }

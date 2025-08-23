@@ -25,7 +25,11 @@ export const UserCard = ({
       aria-labelledby={`${user.id}-title`}
       className={clsx(styles.card, isLast && styles.highlight)}
     >
-      <div className={styles.image}></div>
+      <img
+        src={user.picture}
+        alt={`${user.name} profile`}
+        className={styles.image}
+      />
       <div>
         <header className={styles.header}>
           <div className={styles.info}>

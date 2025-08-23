@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
 import { schema } from '../../utils/schema';
 import * as yup from 'yup';
+import { fileToBase64 } from '../../utils/fileToBase64';
 
 interface IClassicFormProps {
   handleSubmitData: (data: TUserData) => void;
@@ -27,11 +28,13 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     const form = formRef.current;
     if (!form) return;
 
     const formData = new FormData(form);
 
+    const pictureFile = formData.get('picture');
     const values: TUserFormInputs = {
       name: String(formData.get('name') ?? ''),
       age: Number(formData.get('age') ?? ''),
@@ -41,13 +44,21 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
       gender: String(formData.get('gender') ?? ''),
       terms: formData.get('terms') === 'on',
       country: String(formData.get('country') ?? ''),
+      picture: pictureFile instanceof File ? pictureFile : undefined,
     };
 
     try {
       await schema.validate(values, { abortEarly: false });
 
+      let pictureBase64 = '';
+
+      if (pictureFile instanceof File) {
+        pictureBase64 = await fileToBase64(pictureFile);
+      }
+
       const payload: TUserData = {
         ...values,
+        picture: pictureBase64,
         id: uuidv4(),
       };
 
@@ -57,7 +68,8 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
     } catch (err) {
       if (err instanceof yup.ValidationError) {
         const errors: TFormErrors = {};
-
+        console.log(err);
+        console.log('failing');
         err.inner.forEach((error) => {
           if (error.path) {
             errors[error.path] = error.message;
@@ -87,6 +99,7 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
         <div className={styles.field}>
           <label htmlFor="picture">Profile picture:</label>
           <input type="file" id="picture" name="picture" />
+          <p className={styles.error}>{errors.picture}</p>
         </div>
 
         <div className={clsx(styles.field, styles.gender)}>

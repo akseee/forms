@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-
 export const schema = yup.object({
   name: yup
     .string()
@@ -32,4 +31,36 @@ export const schema = yup.object({
     .boolean()
     .oneOf([true], 'You must accept Terms & Conditions')
     .required(),
+  picture: yup
+    .mixed<FileList | File>()
+    .required('Add profile picture')
+    .test('fileType', 'Not a valid image type', (value) => {
+      if (!value) return false;
+
+      let file: File | undefined;
+
+      if ('length' in value) {
+        if (value.length === 0) return false;
+        file = value[0];
+      } else {
+        file = value;
+      }
+
+      const ext = file.name.split('.').pop()?.toLowerCase();
+      return ext ? ['png', 'jpg', 'jpeg'].includes(ext) : false;
+    })
+    .test('fileSize', 'Max size is 2MB', (value) => {
+      if (!value) return false;
+
+      let file: File | undefined;
+
+      if ('length' in value) {
+        if (value.length === 0) return false;
+        file = value[0];
+      } else {
+        file = value;
+      }
+
+      return file.size <= 2 * 1024 * 1024;
+    }),
 });

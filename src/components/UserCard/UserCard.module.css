@@ -15,7 +15,10 @@
 
 .image {
   min-width: 150px;
+  max-height: 150px;
   background-color: red;
+  filter: sepia(100%) hue-rotate(90deg) saturate(100%) brightness(80%)
+    contrast(100%);
 }
 
 .header {

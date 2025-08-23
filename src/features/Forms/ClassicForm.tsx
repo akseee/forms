@@ -56,14 +56,14 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
       setErrors({});
     } catch (err) {
       if (err instanceof yup.ValidationError) {
-        const validationErrors: TFormErrors = {};
+        const errors: TFormErrors = {};
 
         err.inner.forEach((error) => {
           if (error.path) {
-            validationErrors[error.path] = error.message;
+            errors[error.path] = error.message;
           }
         });
-        setErrors(validationErrors);
+        setErrors(errors);
       }
     }
   };

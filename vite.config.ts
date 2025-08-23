@@ -18,7 +18,17 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'html'],
       all: true,
-      exclude: ['public', 'node_modules/', 'dist/'],
+      exclude: [
+        'public',
+        'node_modules/',
+        'dist/',
+        '**/*.config.*',
+        '**/constants.ts',
+        '**/mocks.ts',
+        '**/types.ts',
+        '**/schema.ts',
+        '*.d.ts',
+      ],
       thresholds: {
         global: {
           statements: 80,

@@ -37,7 +37,7 @@ export const UserCard = ({
               <span className={styles.span}> {user.name},</span>
               <span className={styles.span}>{user.country}</span>
             </h2>
-            <p className={styles.age}>{user.age} years old</p>
+            <p className={styles.age}>{user.age} y.o.</p>
           </div>
         </header>
 

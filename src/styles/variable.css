@@ -17,7 +17,7 @@
   --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
   --border-radius: 12px;
 
-  --success: var(--color-green);
-  --error: var(--color-pink);
-  --warn: rgb(241, 148, 72);
+  --success: #28ff33;
+  --error: #ff0022;
+  --warn: rgb(243, 115, 30);
 }

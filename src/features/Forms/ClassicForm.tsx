@@ -11,6 +11,7 @@ import clsx from 'clsx';
 import { schema } from '../../utils/schema';
 import * as yup from 'yup';
 import { fileToBase64 } from '../../utils/fileToBase64';
+import { getPasswordStrength } from '../../utils/passwordStrength';
 
 interface IClassicFormProps {
   handleSubmitData: (data: TUserData) => void;
@@ -19,6 +20,9 @@ interface IClassicFormProps {
 export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const [passwordStrength, setPasswordStrength] = useState<
+    'Weak' | 'Medium' | 'Strong' | 'none'
+  >('none');
 
   const [errors, setErrors] = useState<TFormErrors>({});
 
@@ -122,8 +126,31 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
 
         <div className={styles.field}>
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            onChange={(e) =>
+              setPasswordStrength(getPasswordStrength(e.target.value))
+            }
+            className={clsx(
+              styles.password,
+              passwordStrength === 'Weak' && styles.weak,
+              passwordStrength === 'Medium' && styles.medium,
+              passwordStrength === 'Strong' && styles.strong
+            )}
+          />
           <p className={styles.error}>{errors.password}</p>
+          <p
+            className={clsx(
+              styles.strength,
+              passwordStrength === 'Weak' && styles.weak,
+              passwordStrength === 'Medium' && styles.medium,
+              passwordStrength === 'Strong' && styles.strong
+            )}
+          >
+            {passwordStrength !== 'none' ? `${passwordStrength} password` : ''}
+          </p>
         </div>
 
         <div className={styles.field}>

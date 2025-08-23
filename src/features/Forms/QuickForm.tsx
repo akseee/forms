@@ -5,15 +5,20 @@ import styles from './Form.module.css';
 import { useForm } from 'react-hook-form';
 import { schema } from '../../utils/schema';
 import { v4 as uuidv4 } from 'uuid';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { fileToBase64 } from '../../utils/fileToBase64';
+import { getPasswordStrength } from '../../utils/passwordStrength';
 
 interface IQuickFormProps {
   handleSubmitData: (data: TUserData) => void;
 }
 
 export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
+  const [passwordStrength, setPasswordStrength] = useState<
+    'Weak' | 'Medium' | 'Strong' | 'none'
+  >('none');
+
   const {
     register,
     handleSubmit,
@@ -98,8 +103,31 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
 
         <div className={styles.field}>
           <label htmlFor="password">Password:</label>
-          <input {...register('password')} type="password" id="password" />
+          <input
+            {...register('password')}
+            type="password"
+            id="password"
+            onChange={(e) =>
+              setPasswordStrength(getPasswordStrength(e.target.value))
+            }
+            className={clsx(
+              styles.password,
+              passwordStrength === 'Weak' && styles.weak,
+              passwordStrength === 'Medium' && styles.medium,
+              passwordStrength === 'Strong' && styles.strong
+            )}
+          />
           <p className={styles.error}>{errors.password?.message}</p>
+          <p
+            className={clsx(
+              styles.strength,
+              passwordStrength === 'Weak' && styles.weak,
+              passwordStrength === 'Medium' && styles.medium,
+              passwordStrength === 'Strong' && styles.strong
+            )}
+          >
+            {passwordStrength !== 'none' ? `${passwordStrength} password` : ''}
+          </p>
         </div>
 
         <div className={styles.field}>

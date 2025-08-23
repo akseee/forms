@@ -77,3 +77,43 @@ input {
 .button {
   margin-top: 1em;
 }
+
+.strength {
+  display: block;
+  width: 100%;
+  min-height: 1em;
+  font-size: 0.7em;
+  line-height: 100%;
+  text-align: center;
+}
+
+.strength.weak {
+  color: var(--error);
+}
+
+.strength.medium {
+  color: var(--warn);
+}
+
+.strength.strong {
+  color: black;
+}
+
+.password {
+  outline: 2px solid transparent;
+}
+
+.none {
+  outline-color: transparent;
+}
+.weak {
+  outline-color: var(--error);
+}
+
+.medium {
+  outline-color: var(--warn);
+}
+
+.strong {
+  outline-color: var(--success);
+}

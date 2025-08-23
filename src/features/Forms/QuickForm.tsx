@@ -57,6 +57,11 @@ export const QuickForm = ({ handleSubmitData }: IQuickFormProps) => {
           <p className={styles.error}>{errors.age?.message}</p>
         </div>
 
+        <div className={styles.field}>
+          <label htmlFor="picture">Profile picture:</label>
+          <input type="file" id="picture" name="picture" />
+        </div>
+
         <div className={clsx(styles.field, styles.gender)}>
           <div className={styles.options}>
             <label className={styles.option}>

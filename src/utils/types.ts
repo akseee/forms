@@ -7,6 +7,7 @@ export interface TUserFormInputs {
   gender: string;
   terms: boolean;
   country: string;
+  picture?: string;
 }
 
 export interface TUserData {
@@ -18,6 +19,7 @@ export interface TUserData {
   gender: string;
   terms: boolean;
   country: string;
+  picture?: string;
 }
 
 export interface TFormErrors {
@@ -30,4 +32,5 @@ export interface TFormErrors {
   terms?: string;
   avatar?: string;
   country?: string;
+  [key: string]: string | undefined;
 }

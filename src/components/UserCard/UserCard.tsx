@@ -10,12 +10,12 @@ export const UserCard = ({
   user: TUserData;
   last: boolean;
 }) => {
-  const [highlight, setHighlight] = useState(false);
+  const [isLast, setIsLast] = useState(false);
 
   useEffect(() => {
     if (last) {
-      setHighlight(true);
-      const timer = setTimeout(() => setHighlight(false), 2000);
+      setIsLast(true);
+      const timer = setTimeout(() => setIsLast(false), 2000);
       return () => clearTimeout(timer);
     }
   }, [last]);
@@ -23,7 +23,7 @@ export const UserCard = ({
   return (
     <article
       aria-labelledby={`${user.id}-title`}
-      className={clsx(styles.card, highlight && styles.highlight)}
+      className={clsx(styles.card, isLast && styles.highlight)}
     >
       <div className={styles.image}></div>
       <div>

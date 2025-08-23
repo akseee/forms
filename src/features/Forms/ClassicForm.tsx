@@ -6,9 +6,10 @@ import type {
   TUserFormInputs,
 } from '../../utils/types';
 import { countries } from '../../utils/constants';
-import { validateForm } from '../../utils/validateForm';
 import { v4 as uuidv4 } from 'uuid';
 import clsx from 'clsx';
+import { schema } from '../../utils/schema';
+import * as yup from 'yup';
 
 interface IClassicFormProps {
   handleSubmitData: (data: TUserData) => void;
@@ -42,10 +43,9 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
       country: String(formData.get('country') ?? ''),
     };
 
-    const validationErrors = validateForm(values);
-    setErrors(validationErrors);
+    try {
+      await schema.validate(values, { abortEarly: false });
 
-    if (Object.keys(validationErrors).length === 0) {
       const payload: TUserData = {
         ...values,
         id: uuidv4(),
@@ -53,6 +53,18 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
 
       handleSubmitData(payload);
       form.reset();
+      setErrors({});
+    } catch (err) {
+      if (err instanceof yup.ValidationError) {
+        const validationErrors: TFormErrors = {};
+
+        err.inner.forEach((error) => {
+          if (error.path) {
+            validationErrors[error.path] = error.message;
+          }
+        });
+        setErrors(validationErrors);
+      }
     }
   };
 
@@ -70,6 +82,11 @@ export const ClassicForm = ({ handleSubmitData }: IClassicFormProps) => {
           <label htmlFor="age">Age:</label>
           <input type="number" id="age" name="age" />
           <p className={styles.error}>{errors.age}</p>
+        </div>
+
+        <div className={styles.field}>
+          <label htmlFor="picture">Profile picture:</label>
+          <input type="file" id="picture" name="picture" />
         </div>
 
         <div className={clsx(styles.field, styles.gender)}>

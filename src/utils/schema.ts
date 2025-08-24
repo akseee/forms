@@ -3,7 +3,10 @@ export const schema = yup.object({
   name: yup
     .string()
     .required('Name is required')
-    .matches(/^[A-Z][a-zA-Z]*$/, 'Name must start with an uppercase letter'),
+    .matches(/^[A-Z][a-zA-Z]*$/, {
+      message: 'Name must start with an uppercase letter',
+      excludeEmptyString: true,
+    }),
   age: yup
     .number()
     .required('Age is required')
@@ -16,11 +19,24 @@ export const schema = yup.object({
     .required('Email is required'),
   password: yup
     .string()
-    .matches(
-      /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){4,}$/,
-      'Password must have at least 4 characters, including 1 number, 1 uppercase letter, 1 lowercase letter and 1 special character'
-    )
+    .matches(/[0-9]/, {
+      message: 'Password must contain at least one number',
+      excludeEmptyString: true,
+    })
+    .matches(/[A-Z]/, {
+      message: 'Password must contain at least one uppercase letter',
+      excludeEmptyString: true,
+    })
+    .matches(/[a-z]/, {
+      message: 'Password must contain at least one lowercase letter',
+      excludeEmptyString: true,
+    })
+    .matches(/[^a-zA-Z0-9]/, {
+      message: 'Password must contain at least one special character',
+      excludeEmptyString: true,
+    })
     .required('Password is required'),
+
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'Password must match')

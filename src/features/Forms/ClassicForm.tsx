@@ -13,7 +13,7 @@ import * as yup from 'yup';
 import { fileToBase64 } from '../../utils/fileToBase64';
 import { getPasswordStrength } from '../../utils/passwordStrength';
 
-interface IClassicFormProps {
+export interface IClassicFormProps {
   handleSubmitData: (data: TUserData) => void;
 }
 

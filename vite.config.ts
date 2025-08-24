@@ -27,7 +27,10 @@ export default defineConfig({
         '**/mocks.ts',
         '**/types.ts',
         '**/schema.ts',
-        '*.d.ts',
+        '**/*.d.ts',
+        '**/App.tsx',
+        '**/store.ts',
+        '**/main.tsx',
       ],
       thresholds: {
         global: {

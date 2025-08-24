@@ -10,7 +10,7 @@ import clsx from 'clsx';
 import { fileToBase64 } from '../../utils/fileToBase64';
 import { getPasswordStrength } from '../../utils/passwordStrength';
 
-interface IQuickFormProps {
+export interface IQuickFormProps {
   handleSubmitData: (data: TUserData) => void;
 }
 

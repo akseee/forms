@@ -25,7 +25,11 @@ export const Modal = ({ children, isOpen, handleClose }: IModalPeops) => {
 
   return createPortal(
     <>
-      <div className={styles.overlay} onClick={handleClose}></div>
+      <div
+        data-testid="overlay"
+        className={styles.overlay}
+        onClick={handleClose}
+      ></div>
       <div className={styles.modal}>
         <button onClick={handleClose} className={styles.button}>
           close

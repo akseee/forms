@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  max-width: 1280px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

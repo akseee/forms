@@ -1,0 +1,23 @@
+:root {
+  --color-green: #43bd49;
+  --color-pink: #ff0062;
+
+  --main-ff: 'Fira Sans Condensed', sans-serif;
+  --secondary-ff: Orbitron, monospace;
+
+  --main-color: #fff;
+  --secondary-color: #000;
+  --accent-color: var(--color-green);
+  --accent-color-secondary: var(--color-pink);
+
+  --background-color: #1d1d1d;
+  --modal-background: var(--color-green);
+  --card-background: #5e5e5e;
+
+  --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  --border-radius: 12px;
+
+  --success: #28ff33;
+  --error: #ff0022;
+  --warn: rgb(243, 115, 30);
+}

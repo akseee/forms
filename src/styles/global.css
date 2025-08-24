@@ -1,0 +1,89 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  overflow-y: scroll;
+  color: var(--main-color);
+  font-family: var(--main-ff);
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: var(--background-color);
+}
+
+#modal-root {
+  position: absolute;
+  width: 60%;
+}
+
+button {
+  border: none;
+  padding: 1em 2em;
+  outline: none;
+  font-family: var(--secondary-ff);
+  font-weight: bold;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(177, 177, 177);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--accent-color);
+  font-family: var(--secondary-ff);
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+input,
+textarea,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  border: none;
+  padding: 0.2em 1em;
+  outline: none;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+a {
+  opacity: 0.7;
+  color: var(--accent-color-secondary);
+  font-style: italic;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+a:hover {
+  opacity: 1;
+}
